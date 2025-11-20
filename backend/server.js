@@ -12,14 +12,13 @@ const PORT = process.env.PORT || 4000;
 const JWT_SECRET = process.env.JWT_SECRET || "change_this_secret";
 
 // ---------------- MIDDLEWARE ----------------
-app.use(
-  cors({
-    origin: process.env.FRONTEND_ORIGIN || 'https://homzon-final-frontend.onrender.com',
+app.use(cors({
+    origin: 'https://homzon-final-frontend.onrender.com', // <--- यह जरूरी है
     credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  })
-);
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // <--- ये जोड़ें
+    allowedHeaders: 'Content-Type,Authorization', // <--- ये जोड़ें
+}));
+
 app.use(express.json());
 
 // ---------------- MONGO CONNECTION ----------------
