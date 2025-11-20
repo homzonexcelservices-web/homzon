@@ -14,7 +14,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "change_this_secret";
 // ---------------- MIDDLEWARE ----------------
 app.use(
   cors({
-    origin: process.env.FRONTEND_ORIGIN || "http://localhost:3000",
+    origin: process.env.FRONTEND_ORIGIN || 'https://homzon-final-frontend.onrender.com',
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
