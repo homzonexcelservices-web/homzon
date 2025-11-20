@@ -12,12 +12,7 @@ const PORT = process.env.PORT || 4000;
 const JWT_SECRET = process.env.JWT_SECRET || "change_this_secret";
 
 // ---------------- MIDDLEWARE ----------------
-app.use(cors({
-    origin: 'https://homzon-final-frontend.onrender.com', // <--- यह जरूरी है
-    credentials: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // <--- ये जोड़ें
-    allowedHeaders: 'Content-Type,Authorization', // <--- ये जोड़ें
-}));
+app.use(cors()); // <--- यह सभी origins को अनुमति दे देगा
 
 app.use(express.json());
 
