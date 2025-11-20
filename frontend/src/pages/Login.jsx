@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+// ✅ LIVE API URL को Environment Variable से प्राप्त करें
+const API_BASE_URL = import.meta.env.VITE_API_BASE || "http://localhost:4000"; 
+// Note: VITE_API_BASE should be set to https://homzon-live-api.onrender.com in your .env file
+
 export default function Login() {
   const [role, setRole] = useState("admin");
   const [mobileOrId, setMobileOrId] = useState("");
@@ -37,7 +41,7 @@ export default function Login() {
     }
 
     try {
-      const res = await fetch("http://localhost:4000/api/send-otp", {
+      const res = await fetch(`${API_BASE_URL}/api/send-otp`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ mobile: mobileOrId }),
@@ -53,6 +57,7 @@ export default function Login() {
       }
     } catch (err) {
       console.error("Send OTP error:", err);
+      // alert("🚫 Error connecting to backend"); // Keeping this alert logic as you designed
       alert("🚫 Error connecting to backend");
     }
   }
@@ -78,7 +83,7 @@ export default function Login() {
         payload = { role, mobileOrId, password };
       }
 
-      const res = await fetch("http://localhost:4000/api/login", {
+      const res = await fetch(`${API_BASE_URL}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -135,6 +140,7 @@ export default function Login() {
       navigate(dashboardRoute);
     } catch (err) {
       console.error("Login error:", err);
+      // alert("🚫 Error connecting to backend"); // Keeping this alert logic as you designed
       alert("🚫 Error connecting to backend");
     }
   }
