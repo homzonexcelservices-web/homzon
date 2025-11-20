@@ -16,6 +16,10 @@ app.use(cors()); // <--- यह सभी origins को अनुमति द�
 
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.send('Homzon API is Live and Running!');
+});
+
 // ---------------- MONGO CONNECTION ----------------
 const MONGO_URI = process.env.MONGO_URI || "mongodb://127.0.0.1:27017/homzon_db";
 mongoose
