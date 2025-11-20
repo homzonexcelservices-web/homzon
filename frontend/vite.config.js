@@ -8,7 +8,7 @@ export default defineConfig({
     open: true, // <-- add this line to auto-open browser on `npm run dev`
     proxy: {
       "/api": {
-        target: "http://localhost:4000",
+        target: "https://homzon-live-api.onrender.com",
         changeOrigin: true,
         secure: false,
       },
